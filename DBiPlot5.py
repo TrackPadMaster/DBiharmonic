@@ -8,6 +8,12 @@ Created on Tue Apr 16 15:31:49 2019
 
 # DBiPlot5 is born
 # Primarily adapted from 4.2 with the addition of plotting Peclet numbers
+# The option has also been added to the popup window to plot those Peclet numbers
+# The running issue is that Tk is still doing really weird stuff
+# The program isn't ending properly, and an extra mystery window will show up that can't be closed
+# The only solution I know is to manually interupt the program and then change to another active window
+# For whatever reason, the program doesn't end until you go to another application
+
 
 ###############################################################################
 # Section 0: Importing Libraries
@@ -277,6 +283,8 @@ plotopt4 = tk.Button(frame,text="Phase versus gamma",command=phiplotA)
 plotopt4.pack()
 plotopt5 = tk.Button(frame,text="Phase versus force",command=phiplotB)
 plotopt5.pack()
+plotopt6 = tk.Button(frame,text="3D Peclet plot",command=pecplot)
+plotopt6.pack()
 button = tk.Button(frame,text="(Click to exit)",fg="red",command=root.destroy)
 button.pack(side="bottom")
 
