@@ -27,21 +27,21 @@ c****************************************************************
 c	num_atom
       read(nf_in,*) num_atom
 c   gammaP
-      read(nf_in,*) gammaP
+      read(nf_in,*) gammaP_in
 c   ntstep
       read(nf_in,*) ntstep
 c   phi
       read(nf_in,*) phi
 c   U_0
-      read(nf_in,*) U_0
+      read(nf_in,*) U_in
 c   dt0
-      read(nf_in,*) dt0
+      read(nf_in,*) dt_in
 c   idum
       read(nf_in,*) idum
 c   jdum
       read(nf_in,*) jdum
 c   F_0
-      read(nf_in,*) F_0
+      read(nf_in,*) F_in
 	  
 	  
       close(nf_in)
@@ -83,27 +83,27 @@ c****************************************************************
       nstate = 1
 	  state=dble(nstate)
       oneninth = (1.d0/9.d0)
-      deltaP = 0.d0
+      
 	  
 ! Both of these values are scaled by a 1/2. 
 ! Try to match real values based on units
-      gammaP = gammaP/2.d0
-      F_0 = F_0/2.d0
+      gammaP = gammaP_in * 0.5d0
+      F_0 = F_in * 0.5d0
 
-      dt=dt0/gammaP
+      dt=dt_in/gammaP_in
       tsample=dt*ntstep
       
 ! This line is a correction of the potential from the last version
 ! Now you feed in the U0/Er value, and this halves it for the actual U value
-      U_overER = U_0
-      U_0 = U_0/2.d0
-
-      w_d = dsqrt(U_overER)
+      
+      U_0 = U_in * 0.5d0
+      
+      w_d = dsqrt(U_in)
 	  pi= 3.141592653589793d0
 	  period=2.d0*pi/w_d
 
       A_d = 1.d0
-      B_d = 1d0
+      B_d = 1.d0
 
 c     Write parameters to output file
       if(myid.eq.0)then
