@@ -1,4 +1,4 @@
-      program AlexsLattice
+	program DBiharmonic
 
 c****************************************************************
 	  IMPLICIT REAL*8 (A-H,O-Z)
@@ -198,11 +198,7 @@ c     SAMPLE VARIABLES:
       xmean=xmean/dble(np)
       diff=(xmean2/dble(np)-xmean*xmean)/2.d0/timed
       SAMPLE(1)=vmean
-      SAMPLE(2)=diff	
-! Making some comments here while I know what's going on
-! SAMPLE is used for some things but ISN'T a final value that's written
-! Instead, we're going to use sampleb1 (actual values, velocity and diffusion)
-!	and sambleb2 (error on velocity and diffusion
+      SAMPLE(2)=diff	  
 
 C     STORE SAMPLE VARIABLES:
 c     Gather data from all processes
@@ -286,10 +282,4 @@ c     &     ,time_end-time_begin,' seconds'
          ISET=0
       ENDIF
       RETURN
-      END
-      
-	  
-      
-         
-	  
-		
+	END

@@ -2,8 +2,8 @@
 
 
 
-GAMMA="8.0 8.5 9.0 9.5 10.0 11.0 12.0"
-FF="100"
+GAMMA="2.0 3.0 4.0 5.0 6.0 7.5 9.0 11.0 15.0 20.0 25.0"
+FF="250 300 350 400"
 for ff in $FF; do
 	echo "Starting F0 = "$ff
 	newdir=$ff'Force_200Potential'
